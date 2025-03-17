@@ -1102,7 +1102,7 @@ def create_ui():
                         clear_logs_button2 = gr.Button("清空记录", variant="secondary")
 
                 with gr.TabItem("环境变量管理", id="env-settings"):
-                    with gr.Box(elem_classes="env-manager-container"):
+                    with gr.Group(elem_classes="env-manager-container"):
                         gr.Markdown("""
                             ## 环境变量管理
                             
@@ -1113,7 +1113,7 @@ def create_ui():
                         with gr.Row():
                             # 左侧列：环境变量管理控件
                             with gr.Column(scale=3):
-                                with gr.Box(elem_classes="env-controls"):
+                                with gr.Group(elem_classes="env-controls"):
                                     # 环境变量表格 - 设置为可交互以直接编辑
                                     gr.Markdown("""
                                     <div style="background-color: #e7f3fe; border-left: 6px solid #2196F3; padding: 10px; margin: 15px 0; border-radius: 4px;">
@@ -1257,7 +1257,7 @@ def main():
         app = create_ui()
 
         app.queue()
-        app.launch(share=False, server_name="127.0.0.1", server_port=7860)
+        app.launch(share=False, server_name="0.0.0.0", server_port=7860)
     except Exception as e:
         logging.error(f"启动应用程序时发生错误: {str(e)}")
         print(f"启动应用程序时发生错误: {str(e)}")
